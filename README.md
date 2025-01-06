@@ -46,10 +46,11 @@ This project includes unit tests written using **JUnit 5**. To run the tests:
      </dependency>
      ```
 
-2. Use the built-in test runner in Visual Studio Code:
+2. Write unit tests in the CalculatorTest class. Example:
 
-   - Open the `CalculatorTest` class.
-   - Click the "Run Test" or "Debug Test" buttons next to each test method or run all tests using the testing interface.
+
+ ![image](https://github.com/user-attachments/assets/eb6fcf9e-c119-4f66-9fc2-9f007c7e27fa)
+
 
 3. Alternatively, you can run the tests via the terminal:
 
@@ -59,18 +60,8 @@ This project includes unit tests written using **JUnit 5**. To run the tests:
 
 ### Sample Test Output
 
-- **Success Case:**
-  ```
-  BUILD SUCCESSFUL
-  Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
-  ```
-- **Failure Case:**
-  ```
-  BUILD FAILED
-  Tests run: 4, Failures: 1, Errors: 0, Skipped: 0
-  ```
+![image](https://github.com/user-attachments/assets/2326b7f5-4739-4b6d-b966-f0e5f809df86)
 
----
 
 ## Project Structure
 
@@ -85,4 +76,5 @@ calculator-project/
 |           |-- CalculatorTest.java
 |-- pom.xml (if using Maven)
 ```
-
+link chatgpt: 
+https://chatgpt.com/share/677bb0b9-b084-800f-9fa3-4b032c3bf2a6
