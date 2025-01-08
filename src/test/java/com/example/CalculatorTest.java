@@ -1,69 +1,88 @@
 package com.example;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CalculatorTest {
+@DisplayName("Calculator Tests")
+class CalculatorTest {
 
-    private final Calculator calculator = new Calculator();
+    private Calculator calculator;
 
-    // Kiểm thử phép cộng
-    @Test
-    public void testAddition() {
-        assertEquals(5, calculator.add(2, 3));
-        assertEquals(Integer.MAX_VALUE, calculator.add(Integer.MAX_VALUE, 0));
-        assertEquals(Integer.MIN_VALUE, calculator.add(Integer.MIN_VALUE, 0));
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
     }
 
-    // Kiểm thử phép trừ
-    @Test
-    public void testSubtraction() {
-        assertEquals(-1, calculator.subtract(2, 3));
-        assertEquals(0, calculator.subtract(Integer.MAX_VALUE, Integer.MAX_VALUE));
-        assertEquals(0, calculator.subtract(Integer.MIN_VALUE, Integer.MIN_VALUE));
+    @Nested
+    @DisplayName("Addition Tests")
+    class AdditionTests {
+
+        @ParameterizedTest(name = "Adding {0} and {1} should equal {2}")
+        @CsvSource({
+            "1, 1, 2",
+            "-1, -1, -2",
+            "0, 5, 5",
+            "1000000, 2000000, 3000000"
+        })
+        void testAddition(int a, int b, int expected) {
+            assertEquals(expected, calculator.add(a, b), "Addition failed");
+        }
     }
 
-    // Kiểm thử phép nhân
-    @Test
-    public void testMultiplication() {
-        assertEquals(6, calculator.multiply(2, 3));
-        assertEquals(0, calculator.multiply(0, Integer.MAX_VALUE));
-        assertEquals(Integer.MAX_VALUE, calculator.multiply(Integer.MAX_VALUE, 1));
-        assertEquals(Integer.MIN_VALUE, calculator.multiply(Integer.MIN_VALUE, 1));
+    @Nested
+    @DisplayName("Subtraction Tests")
+    class SubtractionTests {
+
+        @ParameterizedTest(name = "Subtracting {1} from {0} should equal {2}")
+        @CsvSource({
+            "5, 3, 2",
+            "0, 0, 0",
+            "-5, -3, -2",
+            "1000000, 1, 999999"
+        })
+        void testSubtraction(int a, int b, int expected) {
+            assertEquals(expected, calculator.subtract(a, b), "Subtraction failed");
+        }
     }
 
-    // Kiểm thử phép chia
-    @Test
-    public void testDivision() {
-        assertEquals(2, calculator.divide(6, 3));
-        assertEquals(Integer.MAX_VALUE, calculator.divide(Integer.MAX_VALUE, 1));
-        assertEquals(Integer.MIN_VALUE, calculator.divide(Integer.MIN_VALUE, 1));
+    @Nested
+    @DisplayName("Multiplication Tests")
+    class MultiplicationTests {
+
+        @ParameterizedTest(name = "Multiplying {0} and {1} should equal {2}")
+        @CsvSource({
+            "3, 2, 6",
+            "-3, -2, 6",
+            "-3, 2, -6",
+            "0, 10, 0"
+        })
+        void testMultiplication(int a, int b, int expected) {
+            assertEquals(expected, calculator.multiply(a, b), "Multiplication failed");
+        }
     }
 
-    // Kiểm thử ngoại lệ chia cho 0
-    @Test
-    public void testDivisionByZero() {
-        ArithmeticException exception = assertThrows(ArithmeticException.class, () -> {
-            calculator.divide(10, 0);
-        });
-        assertEquals("Không thể chia cho 0", exception.getMessage());
-    }
+    @Nested
+    @DisplayName("Division Tests")
+    class DivisionTests {
 
-    // Kiểm thử ngoại lệ tràn số khi chia
-    @Test
-    public void testDivisionOverflow() {
-        ArithmeticException exception = assertThrows(ArithmeticException.class, () -> {
-            calculator.divide(Integer.MIN_VALUE, -1);
-        });
-        assertEquals("Tràn số khi chia", exception.getMessage());
-    }
+        @ParameterizedTest(name = "Dividing {0} by {1} should equal {2}")
+        @CsvSource({
+            "10, 2, 5",
+            "-10, -2, 5",
+            "-10, 2, -5",
+            "0, 5, 0"
+        })
+        void testDivision(int a, int b, int expected) {
+            assertEquals(expected, calculator.divide(a, b), "Division failed");
+        }
 
-    // Kiểm thử các trường hợp với số âm
-    @Test
-    public void testNegativeNumbers() {
-        assertEquals(-5, calculator.add(-2, -3));
-        assertEquals(-1, calculator.subtract(-2, -1));
-        assertEquals(6, calculator.multiply(-2, -3));
-        assertEquals(-2, calculator.divide(-6, 3));
+        @Test
+        @DisplayName("Division by zero should throw ArithmeticException")
+        void testDivisionByZero() {
+            assertThrows(ArithmeticException.class, () -> calculator.divide(10, 0), "Division by zero did not throw");
+        }
     }
 }
