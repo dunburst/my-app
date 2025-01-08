@@ -15,8 +15,12 @@ public class Calculator {
 
     public int divide(int a, int b) {
         if (b == 0) {
-            throw new ArithmeticException("Cannot divide by zero");
+            throw new ArithmeticException("Không thể chia cho 0");
+        }
+        if (a == Integer.MIN_VALUE && b == -1) {
+            throw new ArithmeticException("Tràn số khi chia");
         }
         return a / b;
     }
 }
+
