@@ -105,7 +105,6 @@ link chatgpt:
 https://chatgpt.com/share/677bb0b9-b084-800f-9fa3-4b032c3bf2a6
 
 
-# My App
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
