@@ -11,15 +11,30 @@ This project is a simple Java-based calculator application that provides basic a
 
 ---
 
+## Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/dunburst/my-app.git
+   cd my-app
+   ```
+
+2. **Install dependencies**:
+
+   Use Maven to install the required dependencies:
+
+   ```bash
+   mvn install
+   ```
+
 ## Getting Started
 
-### Requirements
+## System Requirements
 
-To run this project, you need:
-
-- Java 8 or later
-- A build tool like Maven 
-- Visual Studio Code (VSCode) with the **Java Extension Pack** installed
+- Java 8 or higher
+- Maven (build tool)
+- IDE such as IntelliJ IDEA or Visual Studio Code with Java Extension Pack
 
 
 
@@ -62,6 +77,16 @@ This project includes unit tests written using **JUnit 5**. To run the tests:
 
 ![image](https://github.com/user-attachments/assets/2326b7f5-4739-4b6d-b966-f0e5f809df86)
 
+## Contribution
+
+We welcome contributions from the community. Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/feature-name`.
+3. Commit your changes: `git commit -m 'Add feature XYZ'`.
+4. Push the branch: `git push origin feature/feature-name`.
+5. Create a Pull Request on GitHub.
+
 
 ## Project Structure
 
@@ -78,3 +103,9 @@ calculator-project/
 ```
 link chatgpt: 
 https://chatgpt.com/share/677bb0b9-b084-800f-9fa3-4b032c3bf2a6
+
+
+# My App
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
